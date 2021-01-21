@@ -27,8 +27,7 @@ func main() {
 		WriteTimeout:   global.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
-	s.ListenAndServe()
-
+ 	s.ListenAndServe()
 }
 func setupSetting() error {
 	setting, err := setting.NewSetting()
@@ -39,14 +38,14 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
-	err = setting.ReadSection("App", &global.AppSetting)
-	if err != nil {
-		return err
-	}
-	err = setting.ReadSection("Database", &global.DatabaseSetting)
-	if err != nil {
-		return err
-	}
+	//err = setting.ReadSection( &global.AppSetting)
+	//if err != nil {
+	//	return err
+	//}
+	//err = setting.ReadSection(&global.DatabaseSetting)
+	//if err != nil {
+	//	return err
+	//}
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
 	return nil

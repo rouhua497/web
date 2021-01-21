@@ -17,6 +17,5 @@ func NewSetting() (*Setting, error) {
 	if err != nil {
 		return nil, err
 	}
-
 	return &Setting{vp: vp}, nil
 }
