@@ -34,7 +34,7 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
-	err = setting.ReadSection("Server", &global.ServerSetting)
+	err = setting.ReadSection("server" ,&global.ServerSetting)
 	if err != nil {
 		return err
 	}
