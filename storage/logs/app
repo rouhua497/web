@@ -1,0 +1,2 @@
+2021/01/22 14:35:50 {"callers":["/Users/chenbo/Documents/project/web/main.go: 27 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611297350518957000}
+2021/01/22 14:36:18 {"callers":["/Users/chenbo/Documents/project/web/main.go: 28 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611297378047967000}

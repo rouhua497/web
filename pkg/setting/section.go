@@ -16,7 +16,7 @@ type AppSettings struct {
 	MaxPageSize     int
 	LogSavePath     string
 	LogFileName     string
-	LogFileNxt      string
+	LogFileExt      string
 }
 
 type DatabaseSettings struct {

@@ -8,7 +8,7 @@ App:
   MaxPageSize: 100
   LogSavePath: storage/logs
   LogFileName: app
-  LogFileNxt: .log
+  LogFileExt: .log
 Database:
   DBType: mysql
   Username: root

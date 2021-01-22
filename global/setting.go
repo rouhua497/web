@@ -1,9 +1,13 @@
 package global
 
-import "cicd/pkg/setting"
+import (
+	"cicd/pkg/logger"
+	"cicd/pkg/setting"
+)
 
 var (
 	ServerSetting   *setting.ServerSettings
 	AppSetting      *setting.AppSettings
 	DatabaseSetting *setting.DatabaseSettings
+	Logger          *logger.Logger
 )
