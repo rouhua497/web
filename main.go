@@ -7,7 +7,6 @@ import (
 	"cicd/pkg/logger"
 	"cicd/pkg/setting"
 	"context"
-	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -75,11 +74,10 @@ func setupDBEngine() error {
 }
 
 func setupLogger() error {
-	fmt.Println("---------------------------")
 	fileName := global.AppSetting.LogSavePath + "/" +
 		global.AppSetting.LogFileName +
 		global.AppSetting.LogFileExt
-	global.Logger = logger.Newlogger(&lumberjack.Logger{
+	global.Logger = logger.NewLogger(&lumberjack.Logger{
 		Filename:  fileName,
 		MaxSize:   500,
 		MaxAge:    10,

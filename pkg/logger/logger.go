@@ -13,6 +13,7 @@ import (
 )
 
 type Level int8
+
 type Fields map[string]interface{}
 
 const (
@@ -47,28 +48,18 @@ type Logger struct {
 	ctx       context.Context
 	fields    Fields
 	callers   []string
-	level     Level
 }
 
-func Newlogger(w io.Writer, prefix string, flag int) *Logger {
+func NewLogger(w io.Writer, prefix string, flag int) *Logger {
 	l := log.New(w, prefix, flag)
 	return &Logger{newLogger: l}
 }
 
-//复制
 func (l *Logger) clone() *Logger {
 	nl := *l
 	return &nl
 }
 
-//设置日志等级
-func (l *Logger) WithLevel(lvl Level) *Logger {
-	ll := l.clone()
-	ll.level = lvl
-	return ll
-}
-
-//设置日志公关字段
 func (l *Logger) WithFields(f Fields) *Logger {
 	ll := l.clone()
 	if ll.fields == nil {
@@ -80,14 +71,12 @@ func (l *Logger) WithFields(f Fields) *Logger {
 	return ll
 }
 
-//设置日志上下文属性
 func (l *Logger) WithContext(ctx context.Context) *Logger {
 	ll := l.clone()
 	ll.ctx = ctx
 	return ll
 }
 
-//设置当前某一层调用栈的信息（程序计数器，文件信息和行号）
 func (l *Logger) WithCaller(skip int) *Logger {
 	ll := l.clone()
 	pc, file, line, ok := runtime.Caller(skip)
@@ -99,7 +88,6 @@ func (l *Logger) WithCaller(skip int) *Logger {
 	return ll
 }
 
-//设置当前的整个调用栈的信息
 func (l *Logger) WithCallersFrames() *Logger {
 	maxCallerDepth := 25
 	minCallerDepth := 1
@@ -118,6 +106,7 @@ func (l *Logger) WithCallersFrames() *Logger {
 	ll.callers = callers
 	return ll
 }
+
 func (l *Logger) WithTrace() *Logger {
 	ginCtx, ok := l.ctx.(*gin.Context)
 	if ok {
@@ -129,7 +118,6 @@ func (l *Logger) WithTrace() *Logger {
 	return l
 }
 
-//日志格式化输出
 func (l *Logger) JSONFormat(level Level, message string) map[string]interface{} {
 	data := make(Fields, len(l.fields)+4)
 	data["level"] = level.String()
@@ -165,6 +153,7 @@ func (l *Logger) Output(level Level, message string) {
 		l.newLogger.Panic(content)
 	}
 }
+
 func (l *Logger) Debug(ctx context.Context, v ...interface{}) {
 	l.WithContext(ctx).WithTrace().Output(LevelDebug, fmt.Sprint(v...))
 }
