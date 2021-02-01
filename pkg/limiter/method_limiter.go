@@ -36,6 +36,9 @@ func (l MethodLimiter) GetBucket(key string) (*ratelimit.Bucket, bool) {
 }
 
 //新增多个令牌桶。
+//fillInterval指每过多长时间向桶里放一个令牌
+//capacity 是桶的容量
+//放quantum个令牌
 func (l MethodLimiter) AddBuckets(rules ...LimiterBucketRule) LimiterIface {
 	for _, rule := range rules {
 		if _, ok := l.limiterBuckets[rule.Key]; !ok {

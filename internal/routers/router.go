@@ -3,6 +3,8 @@ package routers
 import (
 	"cicd/internal/middleware"
 	v1 "cicd/internal/routers/api/v1"
+	"cicd/pkg/limiter"
+	"time"
 
 	_ "github.com/go-programming-tour-book/blog-service/docs"
 	swaggerFiles "github.com/swaggo/files"
@@ -11,12 +13,24 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+var methodLimiters = limiter.NewMethodLimiter().AddBuckets(
+	limiter.LimiterBucketRule{
+		Key:          "/auth",
+		FillInterval: time.Second,
+		Capacity:     10,
+		Quantum:      10,
+	},
+)
+
 func NewRouter() *gin.Engine {
 	r := gin.New()
-	r.Use(gin.Logger())
+	r.Use(middleware.AccessLog())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
 	r.POST("/auth", v1.GetAuth)
+	r.Use(middleware.RateLimiter(methodLimiters))
+	r.Use(middleware.ContextTimeout(60))
+	r.Use(middleware.Tracing())
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 
 	apiv1 := r.Group("/api/v1")

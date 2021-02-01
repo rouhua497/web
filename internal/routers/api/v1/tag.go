@@ -1,6 +1,7 @@
 package v1
 
 import (
+	"cicd/global"
 	"cicd/internal/service"
 	"cicd/pkg/app"
 	"cicd/pkg/convert"
@@ -72,10 +73,11 @@ func (t Tag) Create(c *gin.Context) {
 	svc := service.New(c.Request.Context())
 	err := svc.CreateTag(&param)
 	if err != nil {
+		global.Logger.Errorf(c, "svc.CreateTag err: %v", err)
 		response.ToErrorResponse(errcode.ErrorCreateTagFail)
 
 	}
-
+	global.Logger.Errorf(c, "svc.CreateTag err: %v", err)
 	response.ToResponse(gin.H{})
 
 	return
