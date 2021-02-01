@@ -16,17 +16,19 @@ func NewRouter() *gin.Engine {
 	r.Use(gin.Logger())
 	r.Use(gin.Recovery())
 	r.Use(middleware.Translations())
+	r.POST("/auth", v1.GetAuth)
 	r.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
-	tag := v1.NewTag()
-	article := v1.NewArticle()
+
 	apiv1 := r.Group("/api/v1")
 	{
+		tag := v1.NewTag()
 		apiv1.POST("/tags", tag.Create)
 		apiv1.DELETE("/tags/:id", tag.Delete)
 		apiv1.PUT("/tags/:id", tag.Update)
 		apiv1.PATCH("/tags/:id/state", tag.Update)
 		apiv1.GET("/tags", tag.List)
 
+		article := v1.NewArticle()
 		apiv1.POST("/articles", article.Create)
 		apiv1.DELETE("/artivles/:id", article.Delete)
 		apiv1.PUT("/articles/:id", article.Update)

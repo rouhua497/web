@@ -35,3 +35,6 @@
 2021/01/25 11:56:40 {"callers":["/Users/chenbo/Documents/project/web/main.go: 28 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611547000015912000}
 2021/01/25 12:04:20 {"callers":["/Users/chenbo/Documents/project/web/main.go: 27 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611547460217367000}
 2021/01/25 12:04:43 {"callers":["/Users/chenbo/Documents/project/web/main.go: 27 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611547483857718000}
+2021/01/28 10:54:28 {"callers":["/Users/chenbo/Documents/project/web/main.go: 27 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611802468018297000}
+2021/01/28 13:43:55 {"callers":["/Users/chenbo/Documents/project/web/main.go: 27 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611812635581399000}
+2021/01/28 13:49:06 {"callers":["/Users/chenbo/Documents/project/web/main.go: 27 main.init.0"],"level":"info","message":"%!s(MISSING):go-----/%!s(MISSING)","time":1611812946784371000}

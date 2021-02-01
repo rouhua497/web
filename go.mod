@@ -4,6 +4,8 @@ go 1.16
 
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
+	github.com/dgrijalva/jwt-go v3.2.0+incompatible
+	github.com/eddycjy/opentracing-gorm v0.0.0-20200209120330-eafd654cdd8a
 	github.com/gin-gonic/gin v1.6.3
 	github.com/go-openapi/spec v0.20.1 // indirect
 	github.com/go-openapi/swag v0.19.13 // indirect

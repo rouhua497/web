@@ -50,9 +50,8 @@ func (t Tag) Create(db *gorm.DB) error {
 // Model：指定运行 DB 操作的模型实例，默认解析该结构体的名字为表名，
 //格式为大写驼峰转小写下划线驼峰。若情况特殊，也可以编写该结构体的TableName方法，
 //用于指定其对应返回的表名
-func (t Tag) Update(db *gorm.DB) error {
-	db = db.Model(&Tag{}).Where("id =? and is_del=?", t.ID, 0)
-	return db.Update(t).Error
+func (t Tag) Update(db *gorm.DB, values interface{}) error {
+	return db.Model(&t).Where("id = ? AND is_del = ?", t.ID, 0).Updates(values).Error
 }
 func (t Tag) Delete(db *gorm.DB) error {
 	return db.Where("id=? and is_del=?", t.Model.ID, 0).Delete(&t).Error

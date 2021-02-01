@@ -20,3 +20,8 @@ Database:
   ParesTime: True
   MaxIdleConns: 10
   MaxOpenConns: 30
+
+JWT:
+  Secret: chenbo
+  Issuer: blog-service
+  Expire: 7200

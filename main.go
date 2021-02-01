@@ -28,6 +28,7 @@ func init() {
 	if err != nil {
 		log.Fatalf("init.setupSetting err: %v", err)
 	}
+
 }
 func main() {
 	gin.SetMode(global.ServerSetting.RunMode)
@@ -59,6 +60,8 @@ func setupSetting() error {
 	if err != nil {
 		return err
 	}
+
+	err = setting.ReadSection("JWT", &global.JWTSetting)
 	global.ServerSetting.ReadTimeout *= time.Second
 	global.ServerSetting.WriteTimeout *= time.Second
 	return nil
