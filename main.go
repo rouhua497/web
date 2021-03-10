@@ -7,6 +7,7 @@ import (
 	"cicd/pkg/logger"
 	"cicd/pkg/setting"
 	"context"
+	"fmt"
 	"log"
 	"net/http"
 	"time"
@@ -95,7 +96,6 @@ func setupLogger() error {
 
 	return nil
 }
-
 func setupTracer() error {
 	jaegerTracer, _, err := tracer.NewJaegerTracer("blog-servic", "127.0.0.1:6831")
 	if err != nil {
@@ -103,4 +103,8 @@ func setupTracer() error {
 	}
 	global.Tracer = jaegerTracer
 	return nil
+}
+
+func test(){
+	fmt.Println("test")
 }
