@@ -45,6 +45,7 @@ func main() {
 		WriteTimeout:   global.ServerSetting.WriteTimeout,
 		MaxHeaderBytes: 1 << 20,
 	}
+
 	global.Logger.Infof(context.TODO(), "%s:go-----/%s")
 	s.ListenAndServe()
 }

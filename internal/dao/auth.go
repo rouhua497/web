@@ -2,6 +2,8 @@ package dao
 
 import "cicd/internal/model"
 
+
+
 func (d *Dao) GetAuth(Appkey, appSecret string) (model.Auth, error) {
 	auth := model.Auth{
 		AppKey:    Appkey,
